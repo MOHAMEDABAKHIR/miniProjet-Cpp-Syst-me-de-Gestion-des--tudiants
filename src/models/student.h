@@ -18,9 +18,9 @@ public:
     virtual double computeScholarship() const = 0;
 
     // Accesseurs
-    string getName() const { return name; }
-    int getID() const { return id; }
-    float getGpa() const { return gpa; }
+    string getName() const;
+    int getID() const;
+    float getGpa() const;
 
     // Mutateurs avec validation interne
     void setName(const string& n);

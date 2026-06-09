@@ -9,5 +9,15 @@ void Student::setName(const string& nom){
 void Student::setGpa(float moyenne){
     gpa=moyenne;
 };
+string Student::getName() const {
+    return name;
+};
+int Student::getID() const {
+    return id;
+}; 
+float Student::getGpa() const {
+    return gpa;
+};
+
 
 
