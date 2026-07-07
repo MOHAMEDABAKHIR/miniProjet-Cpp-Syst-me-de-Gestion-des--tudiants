@@ -13,5 +13,5 @@ int main() {
     MohamedAli.display();
     cout <<  endl << "La bourse de :" << MohamedAli.getName() << " est: " << MohamedAli.computeScholarship() << endl;
     SaidKhalid.display();
-    cout <<  endl << "La bourse de :" << SaidKhalid.getName() << "est: " << MohamedABAKHIR.computeScholarship() << endl;
-};
+    cout <<  endl << "La bourse de :" << SaidKhalid.getName() << " est: " << SaidKhalid.computeScholarship() << endl;
+}

@@ -1,0 +1,5 @@
+program
+*.o
+build/
+*.user
+.DS_Store

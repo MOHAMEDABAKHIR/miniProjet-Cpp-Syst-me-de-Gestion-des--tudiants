@@ -13,11 +13,10 @@ double UndergraduateStudent::computeScholarship() const{
     return 0;
 };
 void UndergraduateStudent::display() const{
-    cout << "[Licence]";
-    cout << "ID:" << id << "|";
-    cout << "Nom:" << name << "|";
-    cout << "GPA:" << gpa << "|";
-    cout << "Filiére:" << major << "|";
-    cout << "Bourse:" << computeScholarship() << " EUR" ;
-
-};
+    cout << "[Licence] ";
+    cout << "ID : " << id << " | ";
+    cout << "Nom : " << name << " | ";
+    cout << "GPA : " << gpa << " | ";
+    cout << "Filiere : " << major << " | ";
+    cout << "Bourse : " << computeScholarship() << " EUR";
+}

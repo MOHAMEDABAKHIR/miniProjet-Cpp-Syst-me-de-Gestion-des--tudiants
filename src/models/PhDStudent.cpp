@@ -11,11 +11,11 @@ double PhDStudent::computeScholarship() const{
     return 1200;
 };   
 void PhDStudent::display() const{
-    cout << getType() << "|";
-    cout << "ID:" << id << "|";
-    cout << "Nom:" << name << "|";
-    cout << "GPA:" << gpa << "|";
-    cout << "Superviseur:" << supervisor << "|";
-    cout << "Année d'étude:" << yearOfStudy << "|";
-    cout << "Bourse:" << computeScholarship() << " EUR" ;
-};  
+    cout << "[Doctorat] ";
+    cout << "ID : " << id << " | ";
+    cout << "Nom : " << name << " | ";
+    cout << "GPA : " << gpa << " | ";
+    cout << "Superviseur : " << supervisor << " | ";
+    cout << "Annee d'etude : " << yearOfStudy << " | ";
+    cout << "Bourse : " << computeScholarship() << " EUR";
+}

@@ -20,6 +20,7 @@ public:
     // Accesseurs
     string getName() const;
     int getID() const;
+    int getId() const;
     float getGpa() const;
 
     // Mutateurs avec validation interne
