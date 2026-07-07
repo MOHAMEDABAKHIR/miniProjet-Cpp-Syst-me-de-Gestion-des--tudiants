@@ -2,8 +2,7 @@
 
 Ce projet est une application C++ orientee objet pour gerer des etudiants de plusieurs niveaux :
 Licence, Master et Doctorat. Le but est de pratiquer l'heritage, le polymorphisme, les conteneurs STL,
-les exceptions personnalisees, la persistance dans un fichier texte et, dans la suite du projet,
-une interface graphique avec Qt.
+les exceptions personnalisees, la persistance dans un fichier texte et une interface graphique avec Qt.
 
 ## Structure
 
@@ -21,15 +20,30 @@ tests/
 
 ## Compilation
 
+### Tests console
+
 ```bash
 make clean
 make
 ./program
 ```
 
-Le programme lance actuellement les tests console du projet.
+Le programme console lance les tests du projet.
 
-## Fonctionnalites deja implementees
+### Interface Qt
+
+Avec Qt5 ou Qt6 installe :
+
+```bash
+qmake Student_Manager.pro
+make
+./Student_Manager
+```
+
+L'application charge automatiquement `data/students.txt` au demarrage et sauvegarde apres chaque
+ajout, modification ou suppression.
+
+## Fonctionnalites
 
 - Hierarchie de classes avec `Student` abstraite et trois classes derivees.
 - Calcul de bourse selon le type d'etudiant.
@@ -46,7 +60,13 @@ Le programme lance actuellement les tests console du projet.
   - moyenne GPA,
   - nombre d'etudiants par type.
 - Sauvegarde et chargement des etudiants avec `PersistenceManager`.
-- Tests console couvrant les cas principaux et les erreurs demandees.
+- Interface Qt :
+  - tableau ID, nom, type, GPA et bourse,
+  - recherche dynamique,
+  - ajout, modification et suppression,
+  - messages d'erreur via boites de dialogue,
+  - barre de statut avec nombre d'etudiants et moyenne GPA.
+- Tests console couvrant les cas principaux, les erreurs demandees et la persistance.
 
 ## Donnees
 
@@ -60,7 +80,19 @@ Doctorat|1003|Meziane Riad|3.9|Dr. Hadj|2
 
 Les lignes incorrectes sont ignorees au chargement pour eviter que le programme s'arrete sur un fichier abime.
 
-## Suite du travail
+## Tests couverts
 
-La base console est prete pour brancher l'interface graphique Qt : tableau des etudiants, recherche,
-ajout, modification, suppression et affichage des erreurs dans des boites de dialogue.
+- Creation des trois types d'etudiants.
+- Calcul des bourses.
+- Ajout, modification, suppression et recherche.
+- Tri par GPA et par nom.
+- Exceptions : ID invalide, GPA invalide, ID duplique, etudiant introuvable.
+- Sauvegarde, rechargement, fichier absent et lignes corrompues.
+
+## Notes pour le rendu
+
+Pour completer le rendu final, il reste surtout la partie hors code :
+
+- ajouter les noms du binome dans ce README ;
+- enregistrer la video de demonstration ;
+- preparer le rapport PDF avec UML, captures d'ecran et tableau de tests.
