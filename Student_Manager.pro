@@ -6,6 +6,8 @@ TEMPLATE = app
 TARGET = Student_Manager
 
 SOURCES += \
+    src/main.cpp \
+    src/gui/MainWindow.cpp \
     src/gui/StudentDialog.cpp \
     src/models/student.cpp \
     src/models/UndergraduateStudent.cpp \
@@ -15,6 +17,7 @@ SOURCES += \
     src/persistence/PersistenceManager.cpp
 
 HEADERS += \
+    src/gui/MainWindow.h \
     src/gui/StudentDialog.h \
     src/exceptions/StudentExceptions.h \
     src/models/student.h \

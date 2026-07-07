@@ -1,6 +1,7 @@
 #include "StudentDialog.h"
 
 #include <QDialogButtonBox>
+#include <QMessageBox>
 #include <QVBoxLayout>
 
 StudentDialog::StudentDialog(QWidget* parent)
@@ -105,6 +106,22 @@ std::shared_ptr<Student> StudentDialog::buildStudent() const {
         return std::make_shared<GraduateStudent>(name, id, gpa, extra);
     }
     return std::make_shared<PhDStudent>(name, id, gpa, extra, yearSpin->value());
+}
+
+void StudentDialog::accept() {
+    if (nameEdit->text().trimmed().isEmpty()) {
+        QMessageBox::warning(this, "Nom manquant", "Le nom de l'etudiant est obligatoire.");
+        return;
+    }
+
+    if (extraEdit->text().trimmed().isEmpty()) {
+        QString type = typeCombo->currentText();
+        QString label = type == "Doctorat" ? "Le superviseur" : (type == "Master" ? "Le sujet" : "La filiere");
+        QMessageBox::warning(this, "Champ manquant", label + " est obligatoire.");
+        return;
+    }
+
+    QDialog::accept();
 }
 
 void StudentDialog::updateExtraFields() {

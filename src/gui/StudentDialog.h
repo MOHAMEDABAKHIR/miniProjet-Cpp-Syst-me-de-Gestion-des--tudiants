@@ -24,6 +24,7 @@ public:
     std::shared_ptr<Student> buildStudent() const;
 
 private slots:
+    void accept() override;
     void updateExtraFields();
 
 private:
