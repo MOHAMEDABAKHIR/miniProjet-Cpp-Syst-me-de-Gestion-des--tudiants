@@ -1,5 +1,6 @@
 #include <cassert>
 #include <cstdio>
+#include <fstream>
 #include <iostream>
 #include <memory>
 #include <stdexcept>
@@ -52,6 +53,7 @@ void testManager() {
     check(manager.count() == 5, "ajout de cinq etudiants");
     check(manager.findById(1002)->getName() == "Cherif Omar", "recherche par ID");
     check(manager.findByName("am").size() == 1, "recherche partielle par nom");
+    check(manager.findByName("BENALI").size() == 1, "recherche par nom sans tenir compte de la casse");
     check(manager.countByType("Licence") == 2, "statistique par type");
 
     manager.update(1004, make_shared<UndergraduateStudent>("Nouri Sara", 1004, 3.2f, "Maths"));
@@ -95,6 +97,15 @@ void testExceptions() {
     }
 
     try {
+        manager.update(1002, make_shared<GraduateStudent>("Autre Etudiant", 1002, 3.1f, "BD"));
+        manager.add(make_shared<UndergraduateStudent>("Benali Amira", 1003, 3.6f, "Info"));
+        manager.update(1003, make_shared<UndergraduateStudent>("Benali Amira", 1002, 3.6f, "Info"));
+        check(false, "ID duplique detecte pendant une modification");
+    } catch (const DuplicateIDException&) {
+        check(true, "ID duplique detecte pendant une modification");
+    }
+
+    try {
         manager.remove(9999);
         check(false, "etudiant introuvable detecte");
     } catch (const StudentNotFoundException&) {
@@ -115,6 +126,25 @@ void testPersistence() {
     check(loaded.findById(1001)->getName() == "Benali Amira", "chargement des donnees correctes");
 
     remove(path.c_str());
+
+    StudentManager missing = createManager();
+    PersistenceManager::load(missing, "data/fichier_absent.txt");
+    check(missing.count() == 0, "fichier absent charge une liste vide");
+
+    const string corruptPath = "data/test_students_corrupt.txt";
+    ofstream corruptFile(corruptPath.c_str());
+    corruptFile << "Licence|1008|Etudiant Correct|3.7|Info\n";
+    corruptFile << "Ligne vraiment incomplete\n";
+    corruptFile << "Doctorat|44|ID Trop Petit|3.5|Dr. Test|2\n";
+    corruptFile << "Master|1009|GPA Faux|6.2|IA\n";
+    corruptFile.close();
+
+    StudentManager corruptLoaded;
+    PersistenceManager::load(corruptLoaded, corruptPath);
+    check(corruptLoaded.count() == 1, "lignes corrompues ignorees au chargement");
+    check(corruptLoaded.findById(1008)->getType() == "Licence", "ligne correcte conservee apres erreurs");
+
+    remove(corruptPath.c_str());
 }
 
 int main() {
