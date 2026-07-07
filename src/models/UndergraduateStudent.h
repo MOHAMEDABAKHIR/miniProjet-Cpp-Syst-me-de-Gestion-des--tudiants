@@ -10,5 +10,6 @@ class UndergraduateStudent: public Student {
         void display() const override;
         string getType() const override;
         double computeScholarship() const override;
+        string getMajor() const;
 };
 #endif

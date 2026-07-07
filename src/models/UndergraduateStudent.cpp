@@ -12,6 +12,10 @@ double UndergraduateStudent::computeScholarship() const{
         return 500;
     return 0;
 };
+string UndergraduateStudent::getMajor() const{
+    return major;
+}
+
 void UndergraduateStudent::display() const{
     cout << "[Licence] ";
     cout << "ID : " << id << " | ";

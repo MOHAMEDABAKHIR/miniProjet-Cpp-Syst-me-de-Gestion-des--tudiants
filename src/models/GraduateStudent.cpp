@@ -7,6 +7,10 @@ GraduateStudent::GraduateStudent(const string& name, int id , float gpa , const 
 double GraduateStudent::computeScholarship() const{
     return gpa*300;
 };
+string GraduateStudent::getResearchTopic() const{
+    return researchTopic;
+}
+
 string GraduateStudent::getType() const{
     return "Master";
 };

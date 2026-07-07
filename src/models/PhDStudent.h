@@ -10,5 +10,7 @@ class PhDStudent: public Student{
     void display() const override;
     string getType() const override;
     double computeScholarship() const override;
+    string getSupervisor() const;
+    int getYearOfStudy() const;
 };
 #endif

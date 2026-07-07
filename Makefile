@@ -6,6 +6,7 @@ SRC = src/models/student.cpp \
       src/models/UndergraduateStudent.cpp \
       src/models/GraduateStudent.cpp \
       src/services/StudentManager.cpp \
+      src/persistence/PersistenceManager.cpp \
       tests/test_main.cpp
 
 OBJ = $(SRC:.cpp=.o)

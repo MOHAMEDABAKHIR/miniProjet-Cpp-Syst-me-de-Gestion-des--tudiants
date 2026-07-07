@@ -10,6 +10,14 @@ string PhDStudent::getType() const{
 double PhDStudent::computeScholarship() const{
     return 1200;
 };   
+string PhDStudent::getSupervisor() const{
+    return supervisor;
+}
+
+int PhDStudent::getYearOfStudy() const{
+    return yearOfStudy;
+}
+
 void PhDStudent::display() const{
     cout << "[Doctorat] ";
     cout << "ID : " << id << " | ";
